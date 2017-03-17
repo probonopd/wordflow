@@ -22,7 +22,8 @@ script:
   - ./tests/unittest
   - # Dear upstream, please change this so that the following installs to appdir/ rather than app/appdir/
   - sudo make INSTALL_ROOT=appdir install ; cd /home/travis/build/*/wordflow/ ; sudo chown -R $USER app/appdir ; find app/appdir/
-  - mv ./app/appdir/usr/local/bin/* ./app/appdir/usr/bin/ || true
+  - # Dear upstream, please change this so that the following line is not needed anymore
+  - mkdir -p ./app/appdir/usr/bin/ ;  mv ./app/appdir/usr/local/bin/* ./app/appdir/usr/bin/
   - wget -c "https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage" 
   - chmod a+x linuxdeployqt*.AppImage
   - unset QTDIR; unset QT_PLUGIN_PATH ; unset LD_LIBRARY_PATH
